@@ -38,6 +38,11 @@ data/
 *.log
 config.py
 
+# Vercel
+.vercel
+.now
+.env*.local
+
 # OS
 .DS_Store
 Thumbs.db 

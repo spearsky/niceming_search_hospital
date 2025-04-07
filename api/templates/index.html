@@ -160,15 +160,15 @@
                     
                     // API 호출
                     const response = await fetch(`/api/hospitals?${params.toString()}`);
-                    const data = await response.json();
+                    const result = await response.json();
                     
                     if (!response.ok) {
-                        throw new Error(data.error || '데이터를 불러오는데 실패했습니다.');
+                        throw new Error(result.message || '데이터를 불러오는데 실패했습니다.');
                     }
                     
                     // 응답 데이터 처리
-                    if (data.response && data.response.body) {
-                        const body = data.response.body;
+                    if (result.status === 'success' && result.data.response && result.data.response.body) {
+                        const body = result.data.response.body;
                         
                         // 페이지네이션 정보 업데이트
                         document.getElementById('totalCount').textContent = body.totalCount || 0;
